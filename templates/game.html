@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark's Game</title>
+    <style>
+        body {
+            background: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 200px;
+        }
+        h1 {
+            font-size: 48px;
+        }
+        p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Game!</h1>
+    <p>Choose your action:</p>
+
+    <form action="/game" method="post">
+        <button type="submit" name="choice" value="explore">Explore the jungle</button>
+        <button type="submit" name="choice" value="rest">Rest under the tree</button>
+    </form>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonex | Everything You Need</title>
+  <style>
+    /* --- GENERAL --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(160deg, #0a0a0a, #111, #1a1a1a);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f0f0f;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #adff2f;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #adff2f;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: radial-gradient(circle at bottom right, #1a1a1a, #000);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      color: #adff2f;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #111, #adff2f);
+      color: #000;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #333, #d4ff4d);
+      transform: translateY(-5px);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #0f0f0f;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #222;
+    }
+
+    /* --- DECORATIVE WAVES --- */
+    .wave {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #adff2f33, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(60px);
+    }
+
+    .wave.top-left {
+      top: -100px;
+      left: -100px;
+    }
+
+    .wave.bottom-right {
+      bottom: -100px;
+      right: -100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nonex</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wave top-left"></div>
+    <div class="wave bottom-right"></div>
+
+    <h1>Welcome to Nonex</h1>
+    <p>Your all-in-one stop for designs, clothes, wallpapers, and everything creative.</p>
+
+    <div class="buttons">
+      <a href="/presentations" class="btn">Presentations</a>
+      <a href="/wallpapers" class="btn">Wallpapers</a>
+      <a href="/clothes" class="btn">Clothes</a>
+      <a href="/others" class="btn">Others</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Nonex — All Rights Reserved.
+  </footer>
+</body>
+</html>

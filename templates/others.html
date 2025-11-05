@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Others | Nonex</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(160deg, #0a0a0a, #111, #1a1a1a);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f0f0f;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #adff2f;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #adff2f;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #adff2f;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #bbb;
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    a.btn {
+      padding: 15px 35px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #111, #adff2f);
+      color: #000;
+    }
+
+    a.btn:hover {
+      background: linear-gradient(135deg, #333, #d4ff4d);
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #0f0f0f;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #222;
+    }
+
+    .wave {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #adff2f33, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(60px);
+    }
+
+    .wave.top-left {
+      top: -100px;
+      left: -100px;
+    }
+
+    .wave.bottom-right {
+      bottom: -100px;
+      right: -100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nonex</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wave top-left"></div>
+    <div class="wave bottom-right"></div>
+
+    <h1>Others</h1>
+    <p>Explore more creative products and unique finds that don't fit any category — because at Nonex, we make space for everything.</p>
+
+    <a href="/" class="btn">← Back to Home</a>
+  </main>
+
+  <footer>
+    © 2025 Nonex — All Rights Reserved.
+  </footer>
+</body>
+</html>
