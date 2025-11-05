@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ subject }} | Nonex</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    body { font-family: "Poppins", sans-serif; background: #0d0d0d; color: white; margin: 0; padding: 0; }
+    .container { padding: 50px 20px; text-align: center; }
+    h1 { color: #adff2f; margin-bottom: 30px; }
+    .swiper { width: 90%; max-width: 700px; height: 400px; margin: auto; border-radius: 10px; overflow: hidden; }
+    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .btn { display: inline-block; margin-top: 20px; padding: 12px 25px; border-radius: 8px; background: #adff2f; color: #000; font-weight: 600; text-decoration: none; cursor: pointer; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ subject }}</h1>
+
+    <!-- Swiper container -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for slide in slides %}
+          <div class="swiper-slide">
+            <img src="{{ slide }}" alt="Slide {{ loop.index }}">
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Swiper buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Buy button -->
+    <button class="btn" onclick="window.location.href='{{ url_for('payment.choose_payment', item=subject.lower()) }}'">Buy Now</button>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      pagination: { el: '.swiper-pagination' },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+  </script>
+</body>
+</html>

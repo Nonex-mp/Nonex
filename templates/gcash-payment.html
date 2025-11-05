@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pay with GCash</title>
+<style>
+body { font-family:Poppins,sans-serif; text-align:center; background:#0d0d0d; color:white; padding-top:80px;}
+h2 { color:#adff2f; }
+input, button { border-radius:5px; padding:10px; margin:10px 0; }
+.btn { background:#adff2f; color:#000; font-weight:600; cursor:pointer; border:none; }
+</style>
+</head>
+<body>
+  <h2>Pay with GCash</h2>
+  <p>Scan the QR code or send payment to:</p>
+  <h3 style="color:#adff2f;">{{ gcash_number }}</h3>
+  <img src="{{ qr_url }}" alt="GCash QR Code" style="width:250px;margin:20px auto;border-radius:10px;box-shadow:0 0 15px #adff2f;">
+  <p>Enter your email and upload your proof below:</p>
+
+  <form method="POST" enctype="multipart/form-data" style="margin-top:30px;">
+    <input type="email" name="email" placeholder="Your Email" required style="width:250px;"><br>
+    <input type="file" name="proof" accept=".png,.jpg,.jpeg" required><br>
+    <button type="submit" class="btn">Upload Proof</button>
+  </form>
+
+  <br><br>
+  <a href="/" style="color:#adff2f;text-decoration:none;">← Back to Home</a>
+</body>
+</html>

@@ -1,27 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Presentations | Nonex</title>
-  <style>
-    body {
-      background: #0a0a0a;
-      color: white;
-      font-family: "Poppins", sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-    a {
-      color: #adff2f;
-      text-decoration: none;
-      font-size: 1.2em;
-    }
-  </style>
-</head>
-<body>
+<div class="container">
   <h1>Presentations</h1>
-  <p>Here you can find and download Presentation created by Nonex.</p>
-  <br>
-  <a href="/">← Back to Home</a>
-</body>
-</html>
+
+  {% for category in subjects %}
+    {% if category.category %}
+      <h2 style="margin-top:40px; border-bottom:1px solid #444; padding-bottom:5px;">{{ category.category }}</h2>
+    {% endif %}
+
+    <div class="grid">
+      {% for pres in category.presentations %}
+        <a href="{{ url_for('view_presentation', subject=pres.name | lower | replace(' ', '_')) }}" class="box">
+          {% if pres.thumbnail %}
+            <img src="{{ pres.thumbnail }}" alt="{{ pres.name }}">
+          {% else %}
+            <img src="{{ url_for('static', filename='default-thumbnail.png') }}" alt="Default Thumbnail">
+          {% endif %}
+          <div class="box-content">
+            <h3>{{ pres.name }}</h3>
+            {% if pres.desc %}
+              <p>{{ pres.desc }}</p>
+            {% endif %}
+            <div class="price">₱{{ pres.price }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <hr style="border:1px solid #333; margin:40px 0;">
+  {% endfor %}
+</div>
+
+<style>
+  .grid {
+    display: flex;           /* use flex instead of CSS grid for fixed width boxes */
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+  }
+
+  .box {
+    flex: 0 0 388px;         /* fixed width */
+    height: 301px;           /* fixed height */
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+  }
+
+  .box:hover {
+    transform: translateY(-6px);
+    border-color: #adff2f;
+  }
+
+  .box img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .box-content {
+    padding: 10px;
+  }
+
+  .box-content h3 {
+    margin: 0 0 5px 0;
+    color: #adff2f;
+    font-size: 1em;
+  }
+
+  .box-content p {
+    margin: 0 0 10px 0;
+    font-size: 0.85em;
+    color: #aaa;
+  }
+
+  .price {
+    background: #adff2f;
+    color: #000;
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+</style>

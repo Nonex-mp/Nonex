@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Payment | Nonex</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0d0d0d;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 { color: #adff2f; }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 40px;
+    }
+    a {
+      background: #adff2f;
+      color: #000;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    a:hover {
+      background: #c5ff4f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose Payment Method</h1>
+  <p>You're buying: <b>{{ item }}</b></p>
+
+  <div class="buttons">
+    <a href="{{ url_for('payment.buy_gcash', item=item) }}">Pay with GCash</a>
+    <a href="{{ url_for('payment.buy_paypal', item=item) }}">Pay with PayPal</a>
+  </div>
+
+  <br><br>
+  <a href="/" style="color:#000;text-decoration:none;">← Back to Home</a>
+</body>
+</html>
+
+
+

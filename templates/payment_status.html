@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Status</title>
+<style>
+body { background: #0f0f0f; color: white; font-family: "Poppins", sans-serif; text-align: center; padding-top: 100px; }
+h1 { color: #adff2f; }
+.btn { display: inline-block; margin-top: 30px; padding: 12px 25px; border-radius: 8px; background: #adff2f; color: #000; font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+{% if status == "approved" %}
+    <h1>✅ Payment Approved!</h1>
+    <p>You can now download your purchased product.</p>
+    <a class="btn" href="{{ url_for('static', filename='uploads/approved/' + product) }}">Download File</a>
+{% elif status == "pending" %}
+    <h1>⌛ Payment Pending</h1>
+    <p>Your payment proof has been submitted and is awaiting admin approval.</p>
+{% else %}
+    <h1>❌ Payment Rejected</h1>
+    <p>Your proof of payment was rejected. Please contact support.</p>
+{% endif %}
+</body>
+</html>
+

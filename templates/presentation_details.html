@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ subject | capitalize }} Presentation - Nonex</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #adff2f44;
+    }
+
+    .thumb {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #111, #adff2f);
+      color: black;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #333, #d4ff4d);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ filename | replace("_", " ") | capitalize }}</h1>
+    <img src="{{ url_for('static', filename='thumbnails/' + subject + '/' + filename + '.png') }}" alt="Thumbnail" class="thumb">
+    <p>This is a presentation for {{ subject | capitalize }}.</p>
+    <p><strong>Price: ₱50</strong></p>
+    <a href="/buy/{{ subject }}-{{ filename }}" class="btn">Buy Now</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+</head>
+<body style="font-family:Poppins;background:#0d0d0d;color:white;text-align:center;">
+  <h1>Pending Proofs</h1>
+
+  {% if proofs %}
+    {% for email, product, proof in proofs %}
+      <div style="margin:20px;padding:15px;border:1px solid #333;border-radius:8px;">
+        <p><b>Email:</b> {{ email }}</p>
+        <p><b>Product:</b> {{ product }}</p>
+        <img src="/uploads/{{ proof }}" style="width:200px;height:auto;">
+        <form method="POST">
+          <input type="hidden" name="approve" value="{{ proof }}">
+          <button type="submit" style="background:#adff2f;color:#000;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;">Approve</button>
+        </form>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No pending proofs.</p>
+  {% endif %}
+</body>
+</html>

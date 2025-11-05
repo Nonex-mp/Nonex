@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ p.title }} — Nonex</title>
+  <style>
+    body { margin:0; font-family: "Poppins", sans-serif; background: linear-gradient(160deg,#0a0a0a,#111,#1a1a1a); color:#fff; }
+    .container { max-width:1100px; margin:40px auto; padding:20px; }
+    .layout { display:flex; gap:30px; align-items:flex-start; }
+    .left { width: 320px; }
+    .thumb { width:100%; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.6); }
+    .side-list { margin-top:15px; display:flex; flex-direction:column; gap:12px; }
+    .small-thumb { width:70px; height:50px; background:#222; border-radius:6px; }
+    .right { flex:1; }
+    h1 { color:#adff2f; margin-bottom:8px; }
+    p.desc { color:#ccc; margin-bottom:20px; }
+    .price { font-weight:700; color:#000; background:#adff2f; padding:8px 12px; display:inline-block; border-radius:6px; }
+    .buy { display:inline-block; background:#111; color:#adff2f; border:2px solid #adff2f; padding:12px 20px; border-radius:8px; text-decoration:none; margin-left:12px; }
+    .buy:hover { background:#adff2f; color:#000; }
+    .dots { margin:12px 0; }
+    .dot { display:inline-block; width:10px;height:10px;border-radius:50%;background:#444;margin:0 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/presentations" style="color:#ccc; text-decoration:none;">← Back to Presentations</a>
+    <div class="layout">
+      <div class="left">
+        <img src="{{ url_for('static', filename=p.thumbnail) }}" class="thumb" alt="Thumbnail">
+        <div class="side-list">
+          <!-- small thumbnails or other slides (static placeholders) -->
+          <div class="small-thumb"></div>
+          <div class="small-thumb"></div>
+          <div class="small-thumb"></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <h1>{{ p.title }}</h1>
+        <p class="desc">{{ p.description }}</p>
+
+        <!-- slide dots (indicative only, not interactive) -->
+        <div class="dots">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+
+        <div style="margin-top:18px;">
+          <span class="price">₱{{ p.price }}</span>
+          <!-- go to confirmation page -->
+          <a href="{{ url_for('confirm_purchase', slug=p.slug) }}" class="buy">Buy</a>
+        </div>
+
+        <div style="margin-top:30px; color:#bbb;">
+          <h3>About this presentation</h3>
+          <p>This file contains ready-to-use slides suitable for classroom discussion and lectures. After purchase you will be given a download link.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

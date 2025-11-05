@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nonex | Presentations</title>
+  <style>
+    body { font-family: "Poppins", sans-serif; background: #0d0d0d; color: white; margin: 0; padding: 0; }
+    header { background: #111; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+    .logo { color: #adff2f; font-size: 1.8em; font-weight: bold; }
+    nav a { color: #aaa; text-decoration: none; margin-left: 25px; transition: 0.3s; }
+    nav a:hover { color: #adff2f; }
+    .container { padding: 50px 80px; }
+    h1 { text-align: center; color: #adff2f; margin-bottom: 40px; }
+    h2 { color: #adff2f; margin-bottom: 20px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .box {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 300px; /* uniform box height */
+    }
+
+    .box:hover { transform: translateY(-6px); border-color: #adff2f; }
+
+    .box img {
+      width: 100%;
+      height: 160px; /* fixed thumbnail height */
+      object-fit: cover; /* keep image aspect ratio and crop excess */
+      flex-shrink: 0; /* don't let image shrink */
+    }
+
+    .box-content { padding: 15px; flex-grow: 1; }
+    .box h3 { margin: 0; color: #adff2f; }
+    .price { background: #adff2f; color: #000; display: inline-block; padding: 5px 8px; border-radius: 5px; font-weight: 600; margin-top: auto; }
+    hr { border: 1px solid #333; margin: 40px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nonex</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/clothes">Clothes</a>
+      <a href="/wallpapers">Wallpapers</a>
+      <a href="/others">Others</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Presentations</h1>
+
+    {% for category in subjects %}
+      <h2>{{ category.category }}</h2>
+      <div class="grid">
+        {% for presentation in category.presentations %}
+          <a href="{{ url_for('view_presentation', subject=presentation.name|lower) }}" class="box">
+            <img src="{{ presentation.thumbnail }}" alt="{{ presentation.name }}">
+            <div class="box-content">
+              <h3>{{ presentation.name }}</h3>
+              <div class="price">₱{{ presentation.price }}</div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+</body>
+</html>
