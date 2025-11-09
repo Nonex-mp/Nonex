@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from flask import Flask, render_template, url_for, request, redirect, flash, send_from_directory
 from payment import payment_bp
 import os
 
@@ -85,9 +85,10 @@ def wallpapers():
 def others():
     return render_template('others.html')
 
+# --- GOOGLE VERIFICATION ---
 @app.route('/googleb29496bb2ba553a1.html')
 def google_verification():
-    return app.send_static_file('googleb29496bb2ba553a1.html')
+    return send_from_directory('.', 'googleb29496bb2ba553a1.html')
 
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -98,4 +99,5 @@ def allowed_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
