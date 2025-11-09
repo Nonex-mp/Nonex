@@ -85,11 +85,15 @@ def wallpapers():
 def others():
     return render_template('others.html')
 
+@app.route('/googleb29496bb2ba553a1.html')
+def google_verify():
+    return send_from_directory(os.getcwd(), 'googleb29496bb2ba553a1.html')
+
 # --- GOOGLE SITE VERIFICATION ---
 @app.route('/googleb29496bb2ba553a1.html')
 def google_verify():
-    # This serves the Google verification file from your root directory
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googleb29496bb2ba553a1.html')
+    # Serve Google HTML verification file from project root
+    return send_from_directory(os.getcwd(), 'googleb29496bb2ba553a1.html')
 
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -100,4 +104,5 @@ def allowed_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
