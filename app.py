@@ -85,6 +85,10 @@ def wallpapers():
 def others():
     return render_template('others.html')
 
+@app.route('/googleXXXX.html')
+def google_verification():
+    return app.send_static_file('googleb29496bb2ba553a1.html')
+
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
