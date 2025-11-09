@@ -87,7 +87,7 @@ def others():
 
 @app.route('/googleb29496bb2ba553a1.html')
 def google_verify():
-    return send_from_directory(os.getcwd(), 'googleb29496bb2ba553a1.html')
+    return app.send_static_file('googleb29496bb2ba553a1.html')
 
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -95,11 +95,6 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-
-# --- GOOGLE SITE VERIFICATION ---
-@app.route('/googleb29496bb2ba553a1.html')
-def google_verify():
-    return app.send_static_file('googleb29496bb2ba553a1.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
