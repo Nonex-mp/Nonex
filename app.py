@@ -85,9 +85,20 @@ def wallpapers():
 def others():
     return render_template('others.html')
 
+# --- GOOGLE SITE VERIFICATION ---
 @app.route('/googleb29496bb2ba553a1.html')
 def google_verify():
-    return app.send_static_file('googleb29496bb2ba553a1.html')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'googleb29496bb2ba553a1.html')
+
+# Serve sitemap.xml
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml')
+
+# Serve robots.txt
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt')
 
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -98,5 +109,7 @@ def allowed_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
