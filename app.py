@@ -53,8 +53,8 @@ def presentations():
 @app.route('/presentations/<subject>')
 def view_presentation(subject):
     slides = []
-
     subject_lower = subject.lower()
+
     if subject_lower == "history":
         slides = [url_for('static', filename=f'presentations/history{i}.png') for i in range(1, 9)]
     elif subject_lower == "greek":
@@ -85,10 +85,11 @@ def wallpapers():
 def others():
     return render_template('others.html')
 
-# --- GOOGLE VERIFICATION ---
+# --- GOOGLE SITE VERIFICATION ---
 @app.route('/googleb29496bb2ba553a1.html')
-def google_verification():
-    return send_from_directory('.', 'googleb29496bb2ba553a1.html')
+def google_verify():
+    # This serves the Google verification file from your root directory
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googleb29496bb2ba553a1.html')
 
 # --- UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -99,5 +100,4 @@ def allowed_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 
