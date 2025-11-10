@@ -29,11 +29,12 @@ def presentations():
             ]
         },
         {
-            "category": "Filipino",
-            "presentations": [
-                {"name": "Filipino", "thumbnail": url_for('static', filename='presentations/filipino1.png'), "price": 25}
+    "category": "Filipino",
+    "presentations": [
+        {"name": "Filipino", "thumbnail": url_for('static', filename='presentations/filipino1.png'), "price": 25},
+        {"name": "Mga Uri ng Pangungusap", "thumbnail": url_for('static', filename='presentations/mga_uri_ng_pangungusap1.png'), "price": 30}
             ]
-        },
+        }, 
         {
             "category": "English",
             "presentations": [
@@ -62,7 +63,11 @@ def view_presentation(subject):
     elif subject_lower == "mathematics":
         slides = [url_for('static', filename=f'presentations/mathematics{i}.png') for i in range(1, 8)]
     elif subject_lower == "filipino":
-        slides = [url_for('static', filename=f'presentations/filipino{i}.png') for i in range(1, 6)]
+    slides = [url_for('static', filename=f'presentations/filipino{i}.png') for i in range(1, 6)]
+
+elif subject_lower == "mga uri ng pangungusap":
+    slides = [url_for('static', filename=f'presentations/mga_uri_ng_pangungusap{i}.png') for i in range(1, 9)]
+
     elif subject_lower == "english":
         slides = [url_for('static', filename=f'presentations/english{i}.png') for i in range(1, 6)]
     elif subject_lower == "science":
