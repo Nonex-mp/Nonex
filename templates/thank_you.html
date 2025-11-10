@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Submitted - Nonex</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      text-align: center;
+      padding-top: 120px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #adff2f;
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+    }
+
+    a {
+      background-color: #adff2f;
+      color: #000;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(173, 255, 47, 0.5);
+    }
+
+    a:hover {
+      background-color: #c7ff60;
+      box-shadow: 0 0 25px rgba(173, 255, 47, 0.8);
+      transform: scale(1.05);
+    }
+
+    .checkmark {
+      font-size: 3em;
+      color: #adff2f;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkmark">✅</div>
+  <h2>Thank you for your request!</h2>
+  <p>We’ll review your details and contact you shortly via email or Telegram.</p>
+  <a href="{{ url_for('presentations') }}">← Back to Presentations</a>
+</body>
+</html>

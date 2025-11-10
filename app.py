@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, send_from_directory
 from payment import payment_bp
 import os
+import requests
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -29,11 +30,11 @@ def presentations():
             ]
         },
         {
-    "category": "Filipino",
-    "presentations": [
-        {"name": "Mga Uri ng Pangungusap", "thumbnail": url_for('static', filename='presentations/mga_uri_ng_pangungusap1.png'), "price": 55}
+            "category": "Filipino",
+            "presentations": [
+                {"name": "Mga Uri ng Pangungusap", "thumbnail": url_for('static', filename='presentations/mga_uri_ng_pangungusap1.png'), "price": 55}
             ]
-        }, 
+        },
         {
             "category": "English",
             "presentations": [
@@ -90,17 +91,62 @@ def others():
 def google_verify():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'googleb29496bb2ba553a1.html')
 
-# Serve sitemap.xml
+# --- SITEMAP + ROBOTS ---
 @app.route('/sitemap.xml')
 def sitemap_xml():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml')
 
-# Serve robots.txt
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt')
 
-# --- UPLOAD CONFIG ---
+# --- TELEGRAM CUSTOM PRESENTATION REQUEST ---
+TELEGRAM_TOKEN = "8485710868:AAGgWgsZLeQiyhEEwxLTy-3T4gQae9GJ5S0"
+TELEGRAM_CHAT_ID = "8109954183"
+
+def send_to_telegram(name, email, topic, description, language, deadline, budget):
+    message = (
+        f"🎨 *New Custom Presentation Request*\n\n"
+        f"👤 *Name:* {name}\n"
+        f"📧 *Email:* {email}\n"
+        f"📚 *Topic:* {topic}\n"
+        f"🗒 *Description:* {description}\n"
+        f"🌐 *Language:* {language}\n"
+        f"⏰ *Deadline:* {deadline or 'Not specified'}\n"
+        f"💰 *Budget:* {budget or 'Not specified'}"
+    )
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    response = requests.post(url, data={
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": message,
+        "parse_mode": "Markdown"
+    })
+
+    if response.status_code != 200:
+        print("⚠️ Failed to send message to Telegram:", response.text)
+
+@app.route('/request-presentation', methods=['GET', 'POST'])
+def request_presentation():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        topic = request.form.get('topic')
+        description = request.form.get('description')
+        language = request.form.get('language')
+        deadline = request.form.get('deadline')
+        budget = request.form.get('budget')
+
+        if not name or not email or not topic or not description:
+            flash("Please fill in all required fields.", "error")
+            return redirect(url_for('request_presentation'))
+
+        send_to_telegram(name, email, topic, description, language, deadline, budget)
+        return render_template('thank_you.html', name=name)
+
+    return render_template('request_presentation.html')
+
+# --- FILE UPLOAD CONFIG ---
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
@@ -109,6 +155,8 @@ def allowed_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
 

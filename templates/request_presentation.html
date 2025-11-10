@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Custom Presentation | Nonex</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      color: #adff2f;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #adff2f;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid #333;
+      box-shadow: 0 0 20px rgba(173, 255, 47, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      color: #adff2f;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ccc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      background: #0d0d0d;
+      color: white;
+      border: 1px solid #333;
+      font-size: 15px;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #adff2f;
+      box-shadow: 0 0 6px rgba(173, 255, 47, 0.6);
+    }
+
+    button {
+      background-color: #adff2f;
+      color: #000;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #c7ff60;
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(173, 255, 47, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nonex</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/clothes">Clothes</a>
+      <a href="/wallpapers">Wallpapers</a>
+      <a href="/others">Others</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Request a Custom Presentation</h1>
+
+    <form method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+      <label for="topic">Topic or Title</label>
+      <input type="text" id="topic" name="topic" placeholder="e.g. The Impact of Climate Change" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="5" placeholder="Describe your presentation goals, theme, or requirements..." required></textarea>
+
+      <label for="language">Language</label>
+      <select id="language" name="language">
+        <option value="English">English</option>
+        <option value="Filipino">Filipino</option>
+        <option value="Bilingual (Eng-Fil)">Bilingual (Eng-Fil)</option>
+      </select>
+
+      <label for="deadline">Deadline</label>
+      <input type="date" id="deadline" name="deadline">
+
+      <label for="budget">Budget (optional)</label>
+      <input type="text" id="budget" name="budget" placeholder="e.g. ₱100">
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</body>
+</html>
