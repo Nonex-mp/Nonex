@@ -19,7 +19,7 @@ def presentations():
             "category": "History",
             "presentations": [
                 {"name": "History", "thumbnail": url_for('static', filename='presentations/history1.png'), "price": 50},
-                {"name": "Greek", "thumbnail": url_for('static', filename='presentations/greek1.png'), "price": 99}
+                {"name": "Greek", "thumbnail": url_for('static', filename='presentations/greek1.png'), "price": 50}
             ]
         },
         {
@@ -31,8 +31,7 @@ def presentations():
         {
     "category": "Filipino",
     "presentations": [
-        {"name": "Filipino", "thumbnail": url_for('static', filename='presentations/filipino1.png'), "price": 25},
-        {"name": "Mga Uri ng Pangungusap", "thumbnail": url_for('static', filename='presentations/mga_uri_ng_pangungusap1.png'), "price": 30}
+        {"name": "Mga Uri ng Pangungusap", "thumbnail": url_for('static', filename='presentations/mga_uri_ng_pangungusap1.png'), "price": 55}
             ]
         }, 
         {
