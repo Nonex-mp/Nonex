@@ -63,7 +63,7 @@ def view_presentation(subject):
     elif subject_lower == "mathematics":
         slides = [url_for('static', filename=f'presentations/mathematics{i}.png') for i in range(1, 8)]
     elif subject_lower == "filipino":
-    slides = [url_for('static', filename=f'presentations/filipino{i}.png') for i in range(1, 6)]
+        slides = [url_for('static', filename=f'presentations/filipino{i}.png') for i in range(1, 6)]
 elif subject_lower == "mga uri ng pangungusap":
     slides = [url_for('static', filename=f'presentations/mga_uri_ng_pangungusap{i}.png') for i in range(1, 9)]
 
